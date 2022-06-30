@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Pagination } from "@mui/material/Pagination";
+import { Pagination } from "@mui/material";
 import { Box, Stack, Typography } from "@mui/material";
 import { exerciseOptions, fetchData } from "../utils/fetchData";
 
@@ -20,8 +20,23 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
         }}
       >
         {exercises.map((exercise, index) => (
-          <ExerciseCard>{exercise.name}</ExerciseCard>
+          <ExerciseCard key={index} exercise={exercise}>
+            {exercise.name}
+          </ExerciseCard>
         ))}
+      </Stack>
+      <Stack mt="100px" alignItems="center">
+        {exercises.length > 9 && (
+          <Pagination
+            color="standard"
+            shape="rounded"
+            defaultPage={1}
+            count={Math.ceil(exercises.length / 9)}
+            page={currentPage}
+            onChange={Paginate}
+            size="large"
+          />
+        )}
       </Stack>
     </Box>
   );
