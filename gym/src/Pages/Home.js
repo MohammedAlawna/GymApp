@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import { Box } from "@mui/material";
 
-function Home() {
-  return <div>Home</div>;
-}
+import HeroBanner from "../components/HeroBanner";
+import SearchExercies from "../components/SearchExercies";
+import Exercises from "../components/Exercises";
+
+const Home = () => {
+  return (
+    <Box>
+      <HeroBanner />
+      <SearchExercies />
+      <Exercises />
+    </Box>
+  );
+};
 
 export default Home;
